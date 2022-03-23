@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+// font
+$font-roboto: 'Roboto', sans-serif;
+
+// colors
+$color-blue: #6769ff;
+
+// breakpoints
+$breakpoints: (
+  small: 375px,
+  medium: 768px,
+  large: 1024px,
+  x-large: 1440px,
+);

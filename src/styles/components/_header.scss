@@ -1,0 +1,49 @@
+.header {
+  margin-top: 1.25rem;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__callUs {
+    display: flex;
+    align-items: center;
+
+    > p {
+      font-size: 0.75rem;
+      margin-right: 1.43rem;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-right: 0.55rem;
+      }
+
+      a {
+        font-size: 0.87rem;
+        color: $color-blue;
+      }
+    }
+
+    &--mobile {
+      display: block;
+
+      @include mq(medium) {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @include mq(medium) {
+        display: block;
+      }
+    }
+  }
+}
