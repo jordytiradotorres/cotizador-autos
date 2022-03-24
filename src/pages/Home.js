@@ -1,10 +1,18 @@
-import React from 'react';
 import heroMobile from '../assets/images/hero-mobile.png';
 import heroDesktop from '../assets/images/hero-desktop.png';
 import Form from '../components/Form';
 import Text from '../components/Text';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getUsers } from '../redux/actions/cotizador';
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
   return (
     <section className="home">
       <div className="wrapper">

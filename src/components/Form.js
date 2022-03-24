@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
+import { getUserPhone } from '../redux/actions/cotizador';
 import Button from './Button';
 
 const Form = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { userPhone } = useSelector((state) => state.cotizador);
+  console.log(userPhone);
+
   const [values, handleInputChange, reset] = useForm({
     dni: '',
     phone: '',
@@ -10,6 +19,10 @@ const Form = () => {
   });
 
   const { dni, phone, plate } = values;
+
+  useEffect(() => {
+    dispatch(getUserPhone(phone));
+  }, [phone]);
 
   const [checked, setChecked] = useState(false);
   const [error, setError] = useState('');
@@ -49,8 +62,12 @@ const Form = () => {
     e.preventDefault();
 
     if (validate()) {
-      console.log('se envio');
-      reset();
+      if (
+        userPhone.length > 0
+          ? navigate('/assured')
+          : alert('No se encontraron Registros')
+      )
+        reset();
     }
   };
 
