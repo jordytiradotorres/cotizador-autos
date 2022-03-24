@@ -2,5 +2,9 @@
 @import './mixins/media-queries';
 @import './base/reset';
 
+// pages
+@import './pages/home';
+
 // components
 @import './components/header';
+@import './components/text';

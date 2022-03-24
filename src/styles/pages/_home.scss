@@ -1,0 +1,27 @@
+.home {
+  background-color: $color-gray;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  &__information {
+    margin-top: 6rem;
+    height: calc(19.25rem - 6.5rem);
+
+    span {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.65rem;
+      color: $color-gray-title;
+      font-weight: bold;
+      font-family: $font-lato;
+    }
+  }
+
+  &__figure {
+    position: absolute;
+    right: 0;
+    top: 6rem;
+  }
+}

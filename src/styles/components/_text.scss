@@ -1,0 +1,22 @@
+.text {
+  &__title {
+    font-family: $font-lato;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+
+  &__subtitle {
+    color: $color-red;
+    font-size: 1.75rem;
+  }
+
+  &__description {
+    width: 11.44rem;
+    font-family: $font-roboto;
+    line-height: 1.5;
+    font-size: 0.875rem;
+    color: $color-gray-description;
+  }
+}
