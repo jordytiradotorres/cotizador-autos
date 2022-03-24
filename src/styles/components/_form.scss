@@ -84,4 +84,11 @@
   button {
     @include button(100%);
   }
+
+  &__error {
+    color: $color-red;
+    font-size: 0.85rem;
+    font-style: italic;
+    margin: 0.5rem 0;
+  }
 }
