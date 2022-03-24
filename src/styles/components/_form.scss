@@ -1,0 +1,72 @@
+.form {
+  margin-top: 19rem;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin-bottom: 1.5rem;
+    color: $color-gray-title;
+  }
+
+  &__field {
+    display: flex;
+    margin-bottom: 1rem;
+
+    select {
+      border: 1.006px solid $color-gray-border;
+      border-radius: 0.25rem 0 0 0.25rem;
+      outline: none;
+      padding: 0 1rem;
+      font-family: $font-lato;
+      color: $color-gray-title;
+      letter-spacing: 0.0125rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 1rem;
+      outline: none;
+      border-radius: 0.25rem;
+      border: 1.006px solid $color-gray-border;
+
+      &::placeholder {
+        color: $color-gray-border;
+        font-size: 1rem;
+        font-family: $font-lato;
+      }
+    }
+
+    &:first-of-type input {
+      border-radius: 0 0.25rem 0.25rem 0;
+    }
+
+    &:last-of-type {
+      margin-top: 1.5rem;
+      margin-bottom: 0;
+      border: none;
+
+      input {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      label {
+        font-size: 0.75rem;
+        font-family: $font-roboto;
+        line-height: 1.25;
+        color: $color-gray-description;
+        display: inline-block;
+        margin-left: 0.75rem;
+
+        a {
+          color: $color-gray-title;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  button {
+    @include button(100%);
+  }
+}

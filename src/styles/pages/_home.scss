@@ -1,13 +1,15 @@
 .home {
-  background-color: $color-gray;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  .wrapper {
+    background-color: $color-gray;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 
   &__information {
     margin-top: 6rem;
-    height: calc(19.25rem - 6.5rem);
+    height: calc(19.25rem - 5.5rem);
 
     span {
       display: block;

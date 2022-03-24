@@ -1,0 +1,22 @@
+@mixin button($width) {
+  margin-top: 2rem;
+  background-color: $color-red;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.25rem 0;
+  text-align: center;
+  color: $color-white;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  width: $width;
+  font-weight: 700;
+  font-family: $font-lato;
+  letter-spacing: 0.05rem;
+  margin-bottom: 4.6rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: darken($color-red, 15);
+  }
+}

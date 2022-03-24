@@ -2,9 +2,13 @@
 @import './mixins/media-queries';
 @import './base/reset';
 
+// mixins
+@import './mixins/button';
+
 // pages
 @import './pages/home';
 
 // components
 @import './components/header';
 @import './components/text';
+@import './components/form';
