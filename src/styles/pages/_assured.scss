@@ -1,7 +1,115 @@
 .assured {
+  border-top: thin solid #e4e8f7;
+  margin-top: 1.21rem;
+
   @include mq(medium) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 6rem;
+  }
+
+  &__step {
+    @include mq(medium) {
+      background-color: $color-gray;
+      min-height: 100vh;
+    }
+  }
+
+  .step.mobile {
+    display: flex;
+    align-items: center;
+    padding: 1.31rem 0;
+
+    @include mq(medium) {
+      display: none;
+    }
+
+    .step__image {
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 1px solid $color-gray-border;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 0.5rem;
+      }
+    }
+
+    .step__number {
+      font-family: $font-lato;
+      font-weight: 700;
+      letter-spacing: 0.05rem;
+      font-size: 0.65rem;
+      color: $color-gray-title;
+      text-transform: uppercase;
+      margin-left: 0.75rem;
+      margin-right: 1rem;
+    }
+  }
+
+  .step.desktop {
+    display: none;
+    @include mq(medium) {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin-top: 3.25rem;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    & > * {
+      @include mq(medium) {
+        display: flex;
+      }
+    }
+
+    .step__one,
+    .step__two {
+      display: flex;
+      align-items: center;
+      span {
+        width: 1.5rem;
+        height: 1.5rem;
+        border: 1px solid #c5cbe0;
+        border-radius: 50%;
+        font-weight: 700;
+        font-family: $font-lato;
+        font-size: 0.65rem;
+        line-height: 1rem;
+        color: #c5cbe0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+      }
+
+      p {
+        font-family: $font-lato;
+        font-weight: 400;
+        font-size: 1rem;
+        color: #a3abcc;
+        letter-spacing: 0.2px;
+        line-height: 24px;
+      }
+    }
+
+    .step__two {
+      span {
+        background-color: $color-blue;
+        color: $color-white;
+        border: none;
+      }
+    }
+
+    .step__progress {
+      position: relative;
+      top: 0;
+      left: 0.7rem;
+    }
   }
 }
