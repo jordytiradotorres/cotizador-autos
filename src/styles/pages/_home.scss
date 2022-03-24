@@ -1,10 +1,43 @@
 .home {
+  @include mq(medium) {
+    display: grid;
+    grid-template-columns: 33.5rem 1fr;
+  }
+
+  @include mq(medium) {
+    grid-gap: 2rem;
+  }
+
+  @include mq(large) {
+    grid-gap: 7rem;
+  }
+  @include mq(x-large) {
+    grid-gap: 13.8rem;
+  }
+
+  &__hero {
+    display: none;
+    @include mq(medium) {
+      grid-column: 1 / 2;
+      display: block;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      background-color: $color-gray-bg;
+    }
+  }
+
   .wrapper {
     background-color: $color-gray;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
+
+    @include mq(medium) {
+      // grid-column: 1 / 2;
+      display: none;
+    }
   }
 
   &__information {

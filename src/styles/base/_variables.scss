@@ -10,13 +10,14 @@ $color-gray: #f7f8fc;
 $color-gray-title: #494f66;
 $color-gray-description: #676f8f;
 $color-gray-border: #c5cbe0;
+$color-gray-bg: #ecf0ff;
 $color-red: #ef3340;
 $color-white: #ffffff;
 
 // breakpoints
 $breakpoints: (
   small: 375px,
-  medium: 768px,
+  medium: 800px,
   large: 1024px,
   x-large: 1440px,
 );

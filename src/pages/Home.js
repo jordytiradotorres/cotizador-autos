@@ -1,5 +1,6 @@
 import React from 'react';
 import heroMobile from '../assets/images/hero-mobile.png';
+import heroDesktop from '../assets/images/hero-desktop.png';
 import Form from '../components/Form';
 import Text from '../components/Text';
 
@@ -21,6 +22,10 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      <figure className="home__hero">
+        <img src={heroDesktop} alt="hero desktop" />
+      </figure>
 
       <Form />
     </section>
