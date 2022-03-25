@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Assured from './pages/Assured';
 import './styles/styles.scss';
+import Thanks from './pages/Thanks';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/assured" element={<Assured />} />
+        <Route path="/thanks" element={<Thanks />} />
       </Routes>
     </div>
   );
