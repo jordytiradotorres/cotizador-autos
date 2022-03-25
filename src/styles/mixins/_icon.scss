@@ -1,0 +1,15 @@
+@mixin icon($color) {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid $color;
+  border-radius: 50%;
+  font-weight: 700;
+  font-family: $font-lato;
+  font-size: 0.65rem;
+  line-height: 1rem;
+  color: $color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}

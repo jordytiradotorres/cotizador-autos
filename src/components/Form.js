@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
-import { getUserPhone } from '../redux/actions/cotizador';
+import { getFormValues, getUserPhone } from '../redux/actions/cotizador';
 import Button from './Button';
 
 const Form = () => {
@@ -21,8 +20,16 @@ const Form = () => {
   const { dni, phone, plate } = values;
 
   useEffect(() => {
+    dispatch(
+      getFormValues({
+        dni,
+        phone,
+        plate,
+      })
+    );
     dispatch(getUserPhone(phone));
-  }, [phone]);
+    // eslint-disable-next-line
+  }, [dni, phone, plate]);
 
   const [checked, setChecked] = useState(false);
   const [error, setError] = useState('');

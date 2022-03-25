@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Text = ({ title, subtitle, description }) => {
+const Text = ({ title = '', subtitle = '', description = '' }) => {
   return (
     <div className="text">
       <h2 className="text__title">

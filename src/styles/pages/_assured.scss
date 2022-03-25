@@ -5,13 +5,78 @@
   @include mq(medium) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 6rem;
+    column-gap: 3rem;
   }
 
   &__step {
     @include mq(medium) {
       background-color: $color-gray;
       min-height: 100vh;
+    }
+  }
+
+  &__coverage {
+    .back {
+      display: flex;
+      align-items: center;
+      margin-top: 3.25rem;
+      margin-bottom: 1.75rem;
+
+      @media (max-width: 800px) {
+        display: none;
+      }
+
+      &__image {
+        @include icon($color-red);
+      }
+
+      &__text {
+        font-family: $font-lato;
+        font-weight: 400;
+        font-size: 0.75rem;
+        letter-spacing: 0.6px;
+        color: #a3abcc;
+      }
+    }
+
+    .text {
+      &__title {
+        margin-bottom: 0.5rem;
+      }
+      &__description {
+        width: 100%;
+        font-size: 1rem;
+      }
+    }
+
+    .wrapperText {
+      .text:first-of-type {
+        color: #494f66;
+        @include mq(medium) {
+          display: none;
+        }
+
+        .text__description {
+          color: #676f8f;
+          margin-bottom: 24px;
+        }
+      }
+
+      .text:last-of-type {
+        @media (max-width: 800px) {
+          display: none;
+        }
+
+        @include mq(medium) {
+          display: block;
+        }
+        .text__title {
+          display: flex;
+        }
+        .text__description {
+          margin-bottom: 44px;
+        }
+      }
     }
   }
 
@@ -73,19 +138,7 @@
       display: flex;
       align-items: center;
       span {
-        width: 1.5rem;
-        height: 1.5rem;
-        border: 1px solid #c5cbe0;
-        border-radius: 50%;
-        font-weight: 700;
-        font-family: $font-lato;
-        font-size: 0.65rem;
-        line-height: 1rem;
-        color: #c5cbe0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 1rem;
+        @include icon(#c5cbe0);
       }
 
       p {
@@ -110,6 +163,16 @@
       position: relative;
       top: 0;
       left: 0.7rem;
+    }
+  }
+
+  .wrapper {
+    background-color: #f7f8fc;
+    padding: 40px 0 56px 0;
+
+    @include mq(medium) {
+      background-color: $color-white;
+      padding-top: 0;
     }
   }
 }
