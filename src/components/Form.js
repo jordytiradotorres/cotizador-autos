@@ -128,7 +128,7 @@ const Form = () => {
           </label>
         </div>
 
-        <Button type="submit" text="cotízalo" />
+        <Button type="submit" text="cotízalo" handleClick={handleSubmit} />
       </form>
     </div>
   );
