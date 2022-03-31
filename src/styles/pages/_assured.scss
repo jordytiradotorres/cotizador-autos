@@ -175,4 +175,110 @@
       padding-top: 0;
     }
   }
+
+  &__amount {
+    > .container {
+      display: flex;
+      justify-content: space-between;
+
+      @include mq(medium) {
+        flex-direction: column;
+      }
+    }
+    .total {
+      @include mq(medium) {
+        margin-top: 189px;
+        border-bottom: 1px solid #e4e8f7;
+        width: 224px;
+      }
+      h4 {
+        display: none;
+        @include mq(medium) {
+          display: block;
+          font-family: $font-lato;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 0.6px;
+          text-transform: uppercase;
+          color: #494f66;
+        }
+      }
+
+      div {
+        font-family: $font-lato;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 32px;
+        letter-spacing: -0.2px;
+        color: #494f66;
+
+        @include mq(medium) {
+          font-size: 28px;
+          line-height: 36px;
+          margin: 10px 0;
+        }
+      }
+      span {
+        font-family: $font-roboto;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        text-align: center;
+        letter-spacing: 0.2px;
+        color: #676f8f;
+        display: inline-block;
+
+        @include mq(medium) {
+          margin-bottom: 19px;
+        }
+      }
+    }
+    .includes {
+      display: none;
+      @include mq(medium) {
+        display: block;
+        margin-top: 24px;
+      }
+
+      h4 {
+        font-family: $font-lato;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.2px;
+        color: #494f66;
+        margin-bottom: 12px;
+      }
+
+      ul li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+
+        span {
+          font-family: $font-lato;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 24px;
+          display: flex;
+          align-items: center;
+          color: #676f8f;
+          margin-left: 19px;
+        }
+      }
+    }
+
+    button {
+      @include button();
+      margin-top: 0;
+      margin-bottom: 1rem;
+      width: 168px;
+
+      @include mq(medium) {
+        margin-top: 32px;
+        width: 224px;
+      }
+    }
+  }
 }

@@ -1,4 +1,6 @@
 .addOrRemove {
+  margin-bottom: 106px;
+
   &__title {
     font-family: $font-lato;
     font-style: normal;
@@ -7,6 +9,10 @@
     line-height: 28px;
     color: #494f66;
     margin-bottom: 36px;
+
+    @include mq(medium) {
+      margin-top: 36px;
+    }
   }
 
   &__list {
@@ -74,6 +80,10 @@
       position: relative;
       border-bottom: 1px solid #e4e8f7;
 
+      @include mq(medium) {
+        padding: 30px 0;
+      }
+
       figure {
         margin-right: 21px;
         height: 26.62px;
@@ -81,7 +91,7 @@
         flex-basis: 15%;
       }
 
-      input[type='checkbox'] {
+      input[type='checkbox'].show-mobile-input {
         height: 0;
         width: 0;
         visibility: hidden;
@@ -91,7 +101,15 @@
         }
       }
 
-      label {
+      input[type='checkbox'].agregar {
+        display: none;
+        @include mq(medium) {
+          display: block;
+          background-color: blue;
+        }
+      }
+
+      label.show-mobile-label {
         cursor: pointer;
         text-indent: -9999px;
         width: 50px;
@@ -103,6 +121,44 @@
 
         @include mq(medium) {
           display: none;
+        }
+      }
+
+      label.quitar {
+        display: none;
+        @include mq(medium) {
+          display: block;
+          text-indent: 0;
+          width: fit-content;
+          background-color: transparent;
+          position: absolute;
+          top: 2rem;
+          left: 20%;
+          font-family: $font-lato;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 0.6px;
+          text-transform: uppercase;
+          color: #6f7dff;
+
+          div {
+            display: flex;
+            align-items: center;
+            margin: 32px 0 36px 0;
+          }
+
+          span {
+            margin-left: 12px;
+          }
+        }
+
+        &::after {
+          @include mq(medium) {
+            content: none;
+            width: 0;
+            left: 20%;
+          }
         }
       }
 
@@ -162,6 +218,10 @@
         line-height: 24px;
         letter-spacing: 0.2px;
         color: #494f66;
+
+        @include mq(medium) {
+          margin-bottom: 1.3rem;
+        }
       }
       p {
         margin-top: 1rem;
@@ -171,6 +231,10 @@
         font-size: 14px;
         line-height: 24px;
         color: #676f8f;
+
+        @include mq(medium) {
+          margin-top: 52px;
+        }
       }
       button {
         font-family: $font-lato;

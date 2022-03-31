@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import arrow from '../assets/images/arrow.png';
 import arrowRed from '../assets/images/arrow-red.png';
@@ -7,32 +7,24 @@ import progressBlue from '../assets/images/progress-blue.png';
 import progressMask from '../assets/images/progress-mask.png';
 
 import Text from '../components/Text';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Car from '../components/Car';
 import SumAssured from '../components/SumAssured';
-import Button from '../components/Button';
 import { useEffect } from 'react';
 import Navigation from '../components/Navigation';
 
 import tire from '../assets/images/llanta-robada.png';
-import choque from '../assets/images/choque.png';
-import atropello from '../assets/images/atropello.png';
-import arrowTop from '../assets/images/arrow-top.png';
-import arrowBottom from '../assets/images/arrow-bottom.png';
-import arrowRedTop from '../assets/images/arrow-red-top.png';
-import arrowRedBottom from '../assets/images/arrow-red-bottom.png';
+import choqueImg from '../assets/images/choque.png';
+import atropelloImg from '../assets/images/atropello.png';
+import AssuredAmount from '../components/AssuredAmount';
+import Coverage from '../components/Coverage';
 
 const Assured = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-
   const refProtect = useRef();
 
-  // const { userPhone } = useSelector((state) => state.cotizador);
-
-  // const { name } = userPhone && userPhone !== undefined && userPhone[0];
-
-  // console.log(name);
+  const { userPhone } = useSelector((state) => state.cotizador);
+  const { name } = userPhone[0];
 
   useEffect(() => {
     if (location.hash === '#encircle' || location.hash === '#better') {
@@ -48,6 +40,93 @@ const Assured = () => {
   const [showThree, setShowThree] = useState(false);
 
   const [sum, setSum] = useState(14.3);
+  const [insuranceIncludes, setInsuranceIncludes] = useState([
+    'Analisis de motor',
+    'Aros gratis',
+  ]);
+
+  // coverages y total
+  const [llanta, setLlanta] = useState(false);
+  const [choque, setChoque] = useState(false);
+  const [atropello, setAtropello] = useState(false);
+
+  const handleLlanta = () => {
+    setLlanta(!llanta);
+  };
+  const handleChoque = () => {
+    setChoque(!choque);
+  };
+
+  const handleAtropello = () => {
+    setAtropello(!atropello);
+  };
+
+  useEffect(() => {
+    if (sum > 16.0) {
+      setChoque(false);
+      document.getElementById('choque').checked = false;
+      document.getElementById('choque').disabled = true;
+    } else {
+      document.getElementById('choque').disabled = false;
+    }
+  }, [sum]);
+
+  const sumTotal = () => {
+    let base = 20;
+    let result = base;
+
+    if (llanta) {
+      result += 15;
+    }
+    if (choque) {
+      result += 20;
+    }
+    if (atropello) {
+      result += 50;
+    }
+
+    return result;
+  };
+
+  useEffect(() => {
+    if (llanta) {
+      setInsuranceIncludes(['Llanta de respuesto', ...insuranceIncludes]);
+    } else {
+      setInsuranceIncludes(
+        insuranceIncludes.filter((elem) => elem !== 'Llanta de respuesto')
+      );
+    }
+  }, [llanta]);
+
+  useEffect(() => {
+    if (choque) {
+      setInsuranceIncludes([
+        'Choque y/o pasarte la luz roja',
+        ...insuranceIncludes,
+      ]);
+    } else {
+      setInsuranceIncludes(
+        insuranceIncludes.filter(
+          (elem) => elem !== 'Choque y/o pasarte la luz roja'
+        )
+      );
+    }
+  }, [choque]);
+
+  useEffect(() => {
+    if (atropello) {
+      setInsuranceIncludes([
+        'Atropello en la vía Evitamiento',
+        ...insuranceIncludes,
+      ]);
+    } else {
+      setInsuranceIncludes(
+        insuranceIncludes.filter(
+          (elem) => elem !== 'Atropello en la vía Evitamiento'
+        )
+      );
+    }
+  }, [atropello]);
 
   const handleSum = () => {
     setSum(sum + 0.1);
@@ -72,10 +151,6 @@ const Assured = () => {
   };
   const handleShowThree = () => {
     setShowThree(!showThree);
-  };
-
-  const handleClick = () => {
-    navigate('/thanks');
   };
 
   return (
@@ -125,7 +200,7 @@ const Assured = () => {
               />
               <Text
                 title="¡Hola, "
-                subtitle={'undefined'}
+                subtitle={name}
                 description="Conoce las coberturas para tu plan"
               />
             </div>
@@ -144,200 +219,40 @@ const Assured = () => {
 
             <div className="addOrRemove__content">
               <div ref={refProtect}>
-                <div className="addOrRemove__content--protect">
-                  <figure>
-                    <img src={tire} alt="llanta robada" />
-                  </figure>
-
-                  <div className="addOrRemove__content--description">
-                    <h3>Llanta robada</h3>
-                    {show && (
-                      <>
-                        <p>
-                          He salido de casa a las cuatro menos cinco para ir a
-                          la academia de ingles de mi pueblo (Sant Cugat, al
-                          lado de Barcelona) con mi bici, na llego a la academia
-                          que está en el centro del pueblo en una plaza
-                          medio-grande y dejo donde siempre la bici atada con
-                          una pitón a un sitio de esos de poner las bicis
-                        </p>
-                        <button
-                          type="button"
-                          onClick={handleShow}
-                          className="show-minus"
-                        >
-                          ver menos <img src={arrowTop} alt="arrow top" />
-                        </button>
-                      </>
-                    )}
-
-                    {!show && (
-                      <button
-                        type="button"
-                        onClick={handleShow}
-                        className="show-more"
-                      >
-                        ver más <img src={arrowBottom} alt="arrow top" />
-                      </button>
-                    )}
-                  </div>
-
-                  <input
-                    type="checkbox"
-                    id="llanta"
-                    value="Llanta de repuesto"
-                  />
-                  <label htmlFor="llanta">Toggle</label>
-
-                  {show && (
-                    <button
-                      type="button"
-                      onClick={handleShow}
-                      className="arrow-red-top"
-                    >
-                      <img src={arrowRedTop} alt="arrow red top" />
-                    </button>
-                  )}
-                  {!show && (
-                    <button
-                      type="button"
-                      className="arrow-red-bottom"
-                      onClick={handleShow}
-                    >
-                      <img src={arrowRedBottom} alt="arrow red bottom" />
-                    </button>
-                  )}
-                </div>
-
-                <div className="addOrRemove__content--protect">
-                  <figure>
-                    <img src={choque} alt="choque y/o pasarse" />
-                  </figure>
-
-                  <div className="addOrRemove__content--description">
-                    <h3>Choque y/o pasarte la luz roja </h3>
-                    {showTwo && (
-                      <>
-                        <p>
-                          He salido de casa a las cuatro menos cinco para ir a
-                          la academia de ingles de mi pueblo (Sant Cugat, al
-                          lado de Barcelona) con mi bici, na llego a la academia
-                          que está en el centro del pueblo en una plaza
-                          medio-grande y dejo donde siempre la bici atada con
-                          una pitón a un sitio de esos de poner las bicis
-                        </p>
-                        <button
-                          type="button"
-                          onClick={handleShowTwo}
-                          className="show-minus"
-                        >
-                          ver menos <img src={arrowTop} alt="arrow top" />
-                        </button>
-                      </>
-                    )}
-
-                    {!showTwo && (
-                      <button
-                        type="button"
-                        onClick={handleShowTwo}
-                        className="show-more"
-                      >
-                        ver más <img src={arrowBottom} alt="arrow top" />
-                      </button>
-                    )}
-                  </div>
-
-                  <input
-                    type="checkbox"
-                    id="choque"
-                    value="Choque y/o pasarte de luz"
-                  />
-                  <label htmlFor="choque">Toggle</label>
-
-                  {showTwo && (
-                    <button
-                      type="button"
-                      onClick={handleShowTwo}
-                      className="arrow-red-top"
-                    >
-                      <img src={arrowRedTop} alt="arrow red top" />
-                    </button>
-                  )}
-                  {!showTwo && (
-                    <button
-                      type="button"
-                      className="arrow-red-bottom"
-                      onClick={handleShowTwo}
-                    >
-                      <img src={arrowRedBottom} alt="arrow red bottom" />
-                    </button>
-                  )}
-                </div>
-
-                <div className="addOrRemove__content--protect">
-                  <figure>
-                    <img src={atropello} alt="atropello" />
-                  </figure>
-
-                  <div className="addOrRemove__content--description">
-                    <h3>Atropello en la vía Evitamiento </h3>
-                    {showThree && (
-                      <>
-                        <p>
-                          He salido de casa a las cuatro menos cinco para ir a
-                          la academia de ingles de mi pueblo (Sant Cugat, al
-                          lado de Barcelona) con mi bici, na llego a la academia
-                          que está en el centro del pueblo en una plaza
-                          medio-grande y dejo donde siempre la bici atada con
-                          una pitón a un sitio de esos de poner las bicis
-                        </p>
-                        <button
-                          type="button"
-                          onClick={handleShowThree}
-                          className="show-minus"
-                        >
-                          ver menos <img src={arrowTop} alt="arrow top" />
-                        </button>
-                      </>
-                    )}
-
-                    {!showThree && (
-                      <button
-                        type="button"
-                        onClick={handleShowThree}
-                        className="show-more"
-                      >
-                        ver más <img src={arrowBottom} alt="arrow top" />
-                      </button>
-                    )}
-                  </div>
-
-                  <input
-                    type="checkbox"
-                    id="atropello"
-                    value="Atropello en la vía Evitamiento"
-                  />
-                  <label htmlFor="atropello">Toggle</label>
-
-                  {showThree && (
-                    <button
-                      type="button"
-                      onClick={handleShowThree}
-                      className="arrow-red-top"
-                    >
-                      <img src={arrowRedTop} alt="arrow red top" />
-                    </button>
-                  )}
-                  {!showThree && (
-                    <button
-                      type="button"
-                      className="arrow-red-bottom"
-                      onClick={handleShowThree}
-                    >
-                      <img src={arrowRedBottom} alt="arrow red bottom" />
-                    </button>
-                  )}
-                </div>
+                <Coverage
+                  show={show}
+                  handleShow={handleShow}
+                  llanta={llanta}
+                  handleLlanta={handleLlanta}
+                  img={tire}
+                  title="Llanta robada"
+                  id="llanta"
+                  description="He salido de casa a las cuatro menos cinco para ir a la academia
+                  de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi
+                  bici, na llego a la academia que está en el centro del pueblo en
+                  una plaza medio-grande y dejo donde siempre la bici atada con una
+                  pitón a un sitio de esos de poner las bicis"
+                />
+                <Coverage
+                  show={showTwo}
+                  handleShow={handleShowTwo}
+                  llanta={choque}
+                  handleLlanta={handleChoque}
+                  img={choqueImg}
+                  id="choque"
+                  title="Choque y/o pasarte la luz roja"
+                  description="He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis"
+                />
+                <Coverage
+                  show={showThree}
+                  handleShow={handleShowThree}
+                  llanta={atropello}
+                  handleLlanta={handleAtropello}
+                  img={atropelloImg}
+                  id="atropello"
+                  title="Atropello en la vía Evitamiento"
+                  description="He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis"
+                />
               </div>
 
               {location.hash === '#encircle' && (
@@ -355,9 +270,10 @@ const Assured = () => {
         </div>
       </div>
 
-      <div className="assured__amount">
-        <Button text="lo quiero" type="button" handleClick={handleClick} />
-      </div>
+      <AssuredAmount
+        sumTotal={sumTotal}
+        insuranceIncludes={insuranceIncludes}
+      />
     </section>
   );
 };
