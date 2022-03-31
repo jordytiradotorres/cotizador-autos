@@ -257,12 +257,12 @@ const Assured = () => {
 
               {location.hash === '#encircle' && (
                 <div id="encircle">
-                  <h2>contenido rodean</h2>
+                  <h2 style={{ paddingBottom: '1.5rem' }}>contenido rodean</h2>
                 </div>
               )}
               {location.hash === '#better' && (
                 <div id="better">
-                  <h2>contenido mejora</h2>
+                  <h2 style={{ paddingBottom: '1.5rem' }}>contenido mejora</h2>
                 </div>
               )}
             </div>

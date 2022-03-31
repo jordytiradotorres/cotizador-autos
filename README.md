@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Cotizador de seguro de autos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Reto Frontend: cotizador seguro de autos
 
-## Available Scripts
+## Funcionalidad
 
-In the project directory, you can run:
+- En la pagina de login, se valida el campo de phone que coincida con el atributo phone de un usuario de la API: https://jsonplaceholder.typicode.com/users, si coincide continua con la página, de lo contrario mostrará un mensaje con datos inválidos.
 
-### `yarn start`
+- Al agregar o quitar coverturas el monto aumentará o disminuirá como sigue:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  - Monto base = $20
+  - Llanta robada = $15
+  - Choque y/o pasarte la luz roja = $20
+  - Atropello en via Evitamiento = $50
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Al agregar o quitar coverturas automáticamente se incluyen o eliminan en la lista de lo que ofrece el seguro.
+- Si la suma asegurada supera los $ 16.000 entonces se eliminara la covertura "Choque y/o pasarte la luz roja" y se actualizara el monto.
 
-### `yarn test`
+## Tencologías Empleadas:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- HTML
+- CSS
+- Javascript
+- React
+- Redux
+- Sass
 
-### `yarn build`
+## Deployment
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Deployment](https://cotizador-autos-teal.vercel.app)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Imagenes del Proyecto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Mobile](./mobile.png)
+![Desktop](./desktop.png)
